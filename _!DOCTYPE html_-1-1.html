@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raúl Santos Santos | Portfolio Profesional</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#f1f5f9;color:#1e293b;text-align:center;transition:all .3s ease}
+header{background:linear-gradient(135deg,#0f172a,#1e293b);color:white;padding:70px 12%}
+header h1{font-size:2.6rem;margin-bottom:25px}
+.header-description{max-width:850px;margin:0 auto 35px auto;text-align:justify;line-height:1.8}
+.header-location{margin-bottom:10px;opacity:.9}
+.header-contact{margin-top:10px;font-size:.95rem;opacity:.9}
+section{padding:70px 12%}
+h2{margin-bottom:20px;color:#0f172a;position:relative;display:inline-block}
+h2::after{content:"";display:block;width:50px;height:3px;background:#3b82f6;margin:8px auto 0 auto;border-radius:2px}
+a{color:#3b82f6;text-decoration:none;font-weight:500;transition:color .3s ease}
+a:hover{color:#1e40af}
+footer{background:#0f172a;color:white;padding:30px;text-align:center;width:100%;}
+
+/* TIMELINE */
+.timeline{position:relative;max-width:900px;margin:auto}
+.timeline::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:4px;background:#3b82f6;transform:translateX(-50%)}
+.timeline-item{position:relative;width:50%;padding:25px;cursor:pointer;transition:all .3s ease}
+.timeline-item:hover{transform:translateY(-5px)}
+.timeline-item:nth-child(odd){left:0}
+.timeline-item:nth-child(even){left:50%}
+.timeline-dot{width:18px;height:18px;background:white;border:4px solid #3b82f6;border-radius:50%;position:absolute;top:25px;right:-9px;cursor:pointer}
+.timeline-item:nth-child(even) .timeline-dot{left:-9px}
+.timeline-content{display:none;background:white;padding:25px;border-radius:12px;box-shadow:0 10px 25px rgba(0,0,0,.08);margin-top:15px;max-width:420px;margin-left:auto;margin-right:auto;text-align:center}
+.timeline-item.active .timeline-content{display:block}
+
+/* ACCORDION */
+.accordion{max-width:850px;margin:auto}
+.accordion-item{background:white;margin-bottom:15px;border-radius:12px;box-shadow:0 5px 20px rgba(0,0,0,.05);padding:25px;cursor:pointer;transition:all .3s ease;text-align:center}
+.accordion-item:hover{background:#e0f2fe;transform:translateY(-3px)}
+.accordion-content{display:none;margin-top:20px;text-align:center;line-height:1.6}
+.accordion-item.active .accordion-content{display:block}
+
+/* SKILLS */
+.skill-box{background:white;margin:20px auto;padding:25px;max-width:650px;border-radius:12px;box-shadow:0 5px 20px rgba(0,0,0,.05);cursor:pointer;transition:all .3s ease;text-align:center}
+.skill-box:hover{transform:translateY(-5px);background:#e0f2fe}
+.skill-detail{display:none;margin-top:15px;line-height:1.6;text-align:center}
+.skill-box.active .skill-detail{display:block}
+.skill-icon.active .skill-detail{display:display:block;}
+
+.skill-squares{display:flex;justify-content:center;margin-top:10px;margin-bottom:15px}
+.square{width:22px;height:22px;margin:4px;border-radius:4px;background:#e2e8f0;transition:background .3s ease}
+.filled{background:#3b82f6}
+
+/* LANGUAGES */
+.language-box{background:white;margin:20px auto;padding:25px;max-width:650px;border-radius:12px;box-shadow:0 5px 20px rgba(0,0,0,.05);cursor:pointer;transition:all .3s ease}
+.language-box:hover{transform:translateY(-5px);background:#e0f2fe}
+.language-detail{display:none;margin-top:15px;line-height:1.6;text-align:center}
+.language-box.active .language-detail{display:block}
+
+/* HABILIDADES TECNICAS */
+.skills-icons{display:flex;flex-wrap:wrap;justify-content:center;gap:25px;margin-top:20px}
+.skill-icon{background:white;padding:15px 20px;border-radius:12px;box-shadow:0 5px 15px rgba(0,0,0,.08);width:120px;transition:all .3s ease;cursor:pointer;text-align:center}
+.skill-icon i{font-size:2rem;color:#3b82f6;margin-bottom:8px;transition:transform .3s ease,color .3s ease}
+.skill-icon span{display:block;font-weight:600;margin-bottom:5px}
+.skill-icon:hover{transform:translateY(-5px);background:#e0f2fe}
+.skill-icon:hover i{color:#1e40af;transform:scale(1.2)}
+.skill-info-box{background:white;padding:20px;margin:20px auto 0 auto;max-width:600px;border-radius:12px;box-shadow:0 5px 20px rgba(0,0,0,.1);text-align:center;min-height:80px;transition:all .3s ease;font-size:0.95rem;}
+
+.skill-group{background:#fff;margin:20px auto;padding:20px;max-width:800px;border-radius:12px;box-shadow:0 5px 20px rgba(0,0,0,.08);cursor:pointer;text-align:center;transition:.3s}
+.skill-group:hover{transform:translateY(-3px);background:#e0f2fe}
+.skill-group-content{display:none;margin-top:15px;flex-wrap:wrap;justify-content:center;gap:25px}
+.skill-group.open .skill-group-content{display:flex}
+
+/* LISTAS CON FLECHAS EMOJI Y TEXTO CENTRADO */
+ul{list-style:none;padding-left:0;text-align:center}
+li{margin-bottom:8px;position:relative;padding-left:0;text-align:center;transition:all .3s ease}
+li::before{content:"➡️";margin-right:8px;color:#3b82f6;font-weight:bold;display:inline-block}
+li:hover::before{color:#1e40af}
+li:hover{color:#1e40af}
+
+/* ESTILO GENERAL */
+strong{font-weight:600}
+em{font-style:italic}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Raúl Santos Santos</h1>
+<div class="header-description">
+Estudiante de Formación Profesional en Sistemas Microinformáticos y Redes, actualmente finalizando el ciclo, con gran interés en el soporte técnico y la administración de sistemas. 
+Cuento con habilidades prácticas en configuración de equipos informáticos, soporte técnico de hardware y software, y mantenimiento básico de sistemas.  
+Poseo conocimientos en redes locales, sistemas operativos y herramientas de ofimática como Microsoft Excel. 
+Me caracterizo por mi capacidad de aprendizaje, adaptación a nuevos entornos y trabajo en equipo, con interés en seguir desarrollándome en el ámbito de la informática y los sistemas.
+</div>
+<div class="header-location">
+📍 Madrid, España | Nacionalidad española
+</div>
+<div class="header-contact">
+📧 <a href="mailto:raul.santos.santos.07@gmail.com" style="color:#3b82f6">raul.santos.santos.07@gmail.com</a> | 
+🔗 <a href="https://www.linkedin.com/in/raúl-santos-santos" target="_blank" style="color:#3b82f6">LinkedIn</a>
+</div>
+</header>
+
+<section>
+<h2>Itinerario Académico</h2>
+<div class="timeline">
+<div class="timeline-item" onclick="toggleTimeline(this)">
+<div class="timeline-dot"></div>
+<strong>2014–2020 | Colegio Educare Antamira</strong>
+<div class="timeline-content">
+<a href="https://www.colegioantamira.com/" target="_blank">Colegio Educare Antamira</a>
+<ul>
+<li>Formación trilingüe español–inglés–francés</li>
+<li>Disciplina académica basada en el respeto, la responsabilidad y la convivencia</li>
+<li>Formación académica completa en ciencias, humanidades y lenguas</li>
+</ul>
+</div>
+</div>
+
+<div class="timeline-item" onclick="toggleTimeline(this)">
+<div class="timeline-dot"></div>
+<strong>2020–2024 | Colegio Antamira</strong>
+<div class="timeline-content">
+<a href="https://www.colegioantamira.com/" target="_blank">Colegio Antamira</a>
+<ul>
+<li>Metodología basada en el aprendizaje activo y trabajo por proyectos</li>
+<li>Trabajo en equipo, exposiciones y participación en clase</li>
+<li>Desarrollo de habilidades comunicativas y pensamiento crítico</li>
+<li>Superación académica y desarrollo personal</li>
+</ul>
+</div>
+</div>
+
+<div class="timeline-item" onclick="toggleTimeline(this)">
+<div class="timeline-dot"></div>
+<strong>2024–2026 | SMR</strong>
+<div class="timeline-content">
+<a href="https://site.educa.madrid.org/ies.simoneveil.paracuellos/" target="_blank">IES Simone Veil</a>
+<ul>
+<li>Administración Linux y Windows</li>
+<li>DNS, DHCP, Active Directory</li>
+<li>Redes LAN y soporte técnico</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<section>
+<h2>Habilidades Técnicas</h2>
+
+<!-- Cajas donde se mostrará la info de la habilidad -->
+<div class="skill-info-box" id="skillInfoBox" style="display:none;"></div>
+
+<!-- 🎓 FORMACION -->
+<div class="skill-group" onclick="toggleGroup(this)">
+<strong>🎓 Formación (SMR)</strong>
+<div class="skill-group-content">
+
+<div class="skill-icon" onclick="event.stopPropagation();showSkillInfo('Sistemas Operativos')">
+<i class="fas fa-desktop"></i><span>Sistemas Operativos</span>
+</div>
+
+<div class="skill-icon" onclick="event.stopPropagation();showSkillInfo('Redes')">
+<i class="fas fa-network-wired"></i><span>Redes</span>
+</div>
+
+<div class="skill-icon" onclick="event.stopPropagation();showSkillInfo('Servicios en Red')">
+<i class="fas fa-server"></i><span>Servicios en Red</span>
+</div>
+
+<div class="skill-icon" onclick="event.stopPropagation();showSkillInfo('Seguridad Informática')">
+<i class="fas fa-shield-alt"></i><span>Seguridad Informática</span>
+</div>
+
+<div class="skill-icon" onclick="event.stopPropagation();showSkillInfo('HTML')">
+<i class="fas fa-code"></i><span>HTML</span>
+</div>
+
+<div class="skill-icon" onclick="event.stopPropagation();showSkillInfo('CSS')">
+<i class="fas fa-paint-brush"></i><span>CSS</span>
+</div>
+
+<div class="skill-icon" onclick="event.stopPropagation();showSkillInfo('Python')">
+<i class="fab fa-python"></i><span>Python</span>
+</div>
+
+</div>
+</div>
+
+<!-- 🧾 OFIMATICA -->
+<div class="skill-group" onclick="toggleGroup(this)">
+<strong>🧾 Ofimática</strong>
+<div class="skill-group-content">
+
+<div class="skill-icon" onclick="event.stopPropagation();showSkillInfo('Microsoft Word')">
+<i class="fas fa-file-word"></i><span>Microsoft Word</span>
+</div>
+
+<div class="skill-icon" onclick="event.stopPropagation();showSkillInfo('Microsoft Excel')">
+<i class="fas fa-file-excel"></i><span>Microsoft Excel</span>
+</div>
+
+</div>
+</div>
+
+<!-- 🏢 EXPERIENCIA EN EMPRESA -->
+<div class="skill-group" onclick="toggleGroup(this)">
+<strong>🏢 Experiencia en empresa</strong>
+<div class="skill-group-content">
+
+<div class="skill-icon" onclick="event.stopPropagation();showSkillInfo('Soporte Técnico')">
+<i class="fas fa-tools"></i><span>Soporte Técnico</span>
+</div>
+
+<div class="skill-icon" onclick="event.stopPropagation();showSkillInfo('Dispositivos Móviles')">
+<i class="fas fa-mobile-alt"></i><span>Dispositivos Móviles</span>
+</div>
+
+<div class="skill-icon" onclick="event.stopPropagation();showSkillInfo('Microsoft Azure')">
+<i class="fas fa-cloud"></i><span>Microsoft Azure</span>
+</div>
+
+<div class="skill-icon" onclick="event.stopPropagation();showSkillInfo('Lucidchart')">
+<i class="fas fa-project-diagram"></i><span>Lucidchart</span>
+</div>
+
+<div class="skill-icon" onclick="event.stopPropagation();showSkillInfo('Inventario IT')">
+<i class="fas fa-boxes"></i><span>Inventario IT</span>
+</div>
+
+<div class="skill-icon" onclick="event.stopPropagation();showSkillInfo('Instalación de Equipos')">
+<i class="fas fa-desktop"></i><span>Instalación de Equipos</span>
+</div>
+
+</div>
+</div>
+</section>
+
+<section>
+<h2>Idiomas</h2>
+<div class="language-box" onclick="toggleLanguage(this)">
+<strong>Español — Nativo</strong>
+<div class="skill-squares">
+<div class="square filled"></div><div class="square filled"></div><div class="square filled"></div>
+<div class="square filled"></div><div class="square filled"></div><div class="square filled"></div>
+<div class="square filled"></div>
+</div>
+<div class="language-detail">
+Redacción formal y técnica sin errores gramaticales.<br>
+Comunicación oral excelente ante público.<br>
+Capacidad avanzada de elaboración de informes técnicos y correos profesionales.
+</div>
+</div>
+
+<div class="language-box" onclick="toggleLanguage(this)">
+<strong>Inglés — Nivel básico técnico</strong>
+<div class="skill-squares">
+<div class="square filled"></div><div class="square filled"></div><div class="square filled"></div>
+<div class="square filled"></div><div class="square"></div><div class="square"></div><div class="square"></div>
+</div>
+<div class="language-detail">
+Manejo de gramática básica.<br>
+Construcción de frases técnicas.<br>
+Comprensión activa en documentación tecnológica.
+</div>
+</div>
+</section>
+
+<section>
+<h2>Competencias Personales y Sociales</h2>
+<div class="skill-box" onclick="toggleSkill(this)">
+<strong>Comunicación</strong>
+<div class="skill-squares">
+<div class="square filled"></div><div class="square filled"></div><div class="square filled"></div>
+<div class="square filled"></div><div class="square filled"></div>
+</div>
+<div class="skill-detail">
+Capacidad para expresar ideas técnicas de forma clara, realizar presentaciones orales y mantener comunicación profesional efectiva.
+</div>
+</div>
+
+<div class="skill-box" onclick="toggleSkill(this)">
+<strong>Liderazgo</strong>
+<div class="skill-squares">
+<div class="square filled"></div><div class="square filled"></div><div class="square filled"></div>
+<div class="square filled"></div><div class="square"></div>
+</div>
+<div class="skill-detail">
+Habilidad para coordinar equipos, asumir responsabilidades y guiar proyectos de manera organizada.
+</div>
+</div>
+
+<div class="skill-box" onclick="toggleSkill(this)">
+<strong>Empatía</strong>
+<div class="skill-squares">
+<div class="square filled"></div><div class="square filled"></div><div class="square filled"></div>
+<div class="square filled"></div><div class="square"></div>
+</div>
+<div class="skill-detail">
+Capacidad de comprender perspectivas ajenas, colaborar eficazmente en equipo y mantener relaciones profesionales positivas.
+</div>
+</div>
+
+<div class="skill-box" onclick="toggleSkill(this)">
+<strong>Autodisciplina</strong>
+<div class="skill-squares">
+<div class="square filled"></div><div class="square filled"></div><div class="square filled"></div>
+<div class="square filled"></div><div class="square filled"></div>
+</div>
+<div class="skill-detail">
+Constancia, cumplimiento de objetivos y organización rigurosa del tiempo en entornos académicos y profesionales.
+</div>
+</div>
+</section>
+
+<section>
+<h2>Experiencia Profesional</h2>
+<div class="accordion">
+<div class="accordion-item" onclick="toggleAccordion(this)">
+<strong>GCS Informática y Electricidad — 500 horas</strong>
+<div class="accordion-content">
+<a href="https://gcsitemea.com/" target="_blank">GCS Informática y Electricidad</a>
+<ul>
+<li>Instalación de redes empresariales</li>
+<li>Resolución de incidencias</li>
+<li>Soporte hardware y software</li>
+<li>Trato directo con clientes</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<section>
+<h2>Plan de Acción</h2>
+<div class="accordion">
+<div class="accordion-item" onclick="toggleAccordion(this)">
+<strong>Objetivo Académico-Profesional</strong>
+<div class="accordion-content">
+Desarrollarme como programador especializado en Python con posibilidad de trabajo remoto.<br>
+A medio plazo acceder a un puesto como Programador Python.<br>
+A largo plazo, emprender y asumir mayores responsabilidades.
+</div>
+</div>
+
+<div class="accordion-item" onclick="toggleAccordion(this)">
+<strong>Requisitos Necesarios</strong>
+<div class="accordion-content">
+<ul>
+<li>Formación técnica (Grado Medio o Superior)</li>
+<li>Programación profesional en Python</li>
+<li>Experiencia práctica</li>
+<li>Nivel alto de inglés</li>
+<li>Adaptabilidad y trabajo en equipo</li>
+<li>Gestión del tiempo y autodisciplina</li>
+</ul>
+</div>
+</div>
+
+<div class="accordion-item" onclick="toggleAccordion(this)">
+<strong>Pasos para Conseguirlo</strong>
+<div class="accordion-content">
+<ul>
+<li>Finalizar SMR con alto rendimiento</li>
+<li>Crear proyectos propios y publicarlos en GitHub</li>
+<li>Formación en SQL y Python avanzado</li>
+<li>Practicar entrevistas técnicas</li>
+<li>Desarrollar resiliencia profesional</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<footer>
+  © 2026 Raúl Santos Santos <br>
+
+  📄 <a 
+    href="Raúl-Santos-Santos_CV.pdf" 
+    target="_blank" 
+    download
+    style="color:#3b82f6; text-decoration:none;"
+  >
+    Ver CV
+  </a>
+  <br>
+
+  📧 <a href="mailto:raul.santos.santos.07@gmail.com" style="color:#3b82f6">
+    Enviar correo
+  </a>
+</footer>
+
+<script>
+// ACCORDION Y TIMELINE
+function toggleAccordion(el){el.classList.toggle("active")}
+function toggleSkill(el){el.classList.toggle("active")}
+function toggleLanguage(el){el.classList.toggle("active")}
+function toggleTimeline(el){el.classList.toggle("active")}
+function toggleGroup(el){el.classList.toggle("open");}
+
+// MOSTRAR INFO HABILIDADES TECNICAS
+const skillInfoBox = document.getElementById('skillInfoBox');
+function showSkillInfo(skill){
+  let info = '';
+  switch(skill){
+
+    // 🎓 SMR (primero)
+    case 'Sistemas Operativos':
+      info = 'Administración básica de Windows y Linux, gestión de usuarios, permisos y configuración del sistema en entorno académico (SMR).';
+      break;
+    case 'Redes':
+      info = 'Conocimientos de redes LAN, direccionamiento IP y configuración básica adquiridos en SMR.';
+      break;
+    case 'Servicios en Red':
+      info = 'Conocimientos básicos de DNS, DHCP y compartición de recursos en redes locales adquiridos en SMR.';
+      break;
+    case 'Seguridad Informática':
+      info = 'Conocimientos básicos de seguridad en sistemas, buenas prácticas, copias de seguridad y protección de datos (SMR).';
+      break;
+    case 'HTML':
+      info = 'Creación de páginas web estructuradas mediante HTML. Nivel básico-intermedio adquirido en SMR.';
+      break;
+    case 'CSS':
+      info = 'Diseño básico de páginas web mediante estilos, colores y maquetación sencilla. Conocimientos adquiridos en SMR.';
+      break;
+    case 'Python':
+      info = 'Conocimientos básicos de programación en Python, incluyendo lógica simple y estructuras básicas aprendidas en SMR.';
+      break;
+    case 'Microsoft Word':
+      info = 'Creación y edición de documentos, formato de textos y elaboración de documentos básicos en entorno académico y de prácticas.';
+      break;
+    case 'Microsoft Excel':
+      info = 'Uso de Microsoft Excel tanto en entorno académico (SMR) como en prácticas en ILUNION Sociosanitario. Gestión y organización de datos, uso de funciones básicas, filtrado de información y tratamiento de datos técnicos.';
+      break;
+
+    // 🏢 EMPRESA (al final)
+    case 'Soporte Técnico':
+      info = 'Resolución de incidencias básicas, soporte a usuarios y mantenimiento de equipos en entorno empresarial (ILUNION Sociosanitario).';
+      break;
+    case 'Dispositivos Móviles':
+      info = 'Configuración, despliegue y puesta en funcionamiento de smartphones. Instalación y activación de tarjetas SIM en ILUNION Sociosanitario.';
+      break;
+    case 'Microsoft Azure':
+      info = 'Gestión básica de usuarios y estructuras organizativas en entornos corporativos en la nube durante prácticas en ILUNION Sociosanitario.';
+      break;
+    case 'Lucidchart':
+      info = 'Creación de diagramas de red para representación de infraestructuras en entorno empresarial.';
+      break;
+    case 'Inventario IT':
+      info = 'Control y registro de material informático, organización de dispositivos y equipos en ILUNION Sociosanitario.';
+      break;
+    case 'Instalación de Equipos':
+      info = 'Montaje de puestos de trabajo, instalación de monitores, periféricos y configuración básica de equipos informáticos en ILUNION Sociosanitario.';
+      break;
+  }
+  skillInfoBox.innerHTML = info;
+  skillInfoBox.style.display = 'block';
+}
+</script>
+
+</body>
+</html>
+
+, no se me ha guardado , lo que habiamos hecho
