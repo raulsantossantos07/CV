@@ -45,7 +45,6 @@ footer{background:#0f172a;color:white;padding:30px;text-align:center;width:100%;
 .skill-box:hover{transform:translateY(-5px);background:#e0f2fe}
 .skill-detail{display:none;margin-top:15px;line-height:1.6;text-align:center}
 .skill-box.active .skill-detail{display:block}
-.skill-icon.active .skill-detail{display:display:block;}
 
 .skill-squares{display:flex;justify-content:center;margin-top:10px;margin-bottom:15px}
 .square{width:22px;height:22px;margin:4px;border-radius:4px;background:#e2e8f0;transition:background .3s ease}
@@ -72,7 +71,6 @@ footer{background:#0f172a;color:white;padding:30px;text-align:center;width:100%;
 .skill-group.open .skill-group-content{display:flex}
 .skill-icon{width:110px;background:#fff;padding:12px;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.08);text-align:center;transition:.3s}
 .skill-icon:hover{transform:translateY(-3px);background:#e0f2fe}
-.skill-group.open .skill-group-content{display:flex;}
 
 /* LISTAS CON FLECHAS EMOJI Y TEXTO CENTRADO */
 ul{list-style:none;padding-left:0;text-align:center}
@@ -154,7 +152,7 @@ Me caracterizo por mi capacidad de aprendizaje, adaptación a nuevos entornos y 
 <h2>Habilidades Técnicas</h2>
 
 <!-- Cajas donde se mostrará la info de la habilidad -->
-<div class="skill-info-box" id="skillInfoBox" style="display:none;"></div>
+<div class="skill-info-box" id="skillInfoBox">Selecciona una habilidad para ver más detalles</div>
 
 <!-- 🎓 FORMACION -->
 <div class="skill-group" onclick="toggleGroup(this)">
@@ -453,7 +451,7 @@ Enfoque constructivo ante dificultades.
 <div class="accordion-content">
 <a href="https://www.ilunion.com/" target="_blank">ILUNION Sociosanitario</a>
 <ul>
-<li>Soporte técnico a usuarios y resolución de incidencias informáticas en entorno corporativo</li>
+<li>Soporte técnico a usuarios y resolución de incidencias informáticas</li>
 <li>Configuración y puesta en marcha de dispositivos móviles corporativos</li>
 <li>Gestión básica de usuarios y estructura organizativa en Microsoft Azure</li>
 <li>Control de inventario y registro de material informático</li>
@@ -532,19 +530,49 @@ A largo plazo especializarme en desarrollo tecnológico y videojuegos.
 
 <script>
 // ACCORDION Y TIMELINE
-function toggleAccordion(el){el.classList.toggle("active")}
-function toggleSkill(el){el.classList.toggle("active")}
-function toggleLanguage(el){el.classList.toggle("active")}
-function toggleTimeline(el){el.classList.toggle("active")}
-function toggleGroup(el){el.classList.toggle("open");}
+function toggleAccordion(el){
+  // Cerrar otros accordions abiertos
+  document.querySelectorAll('.accordion-item.active').forEach(item => {
+    if (item !== el) item.classList.remove('active');
+  });
+  el.classList.toggle('active');
+}
+
+function toggleSkill(el){
+  // Cerrar otras skills abiertas
+  document.querySelectorAll('.skill-box.active').forEach(item => {
+    if (item !== el) item.classList.remove('active');
+  });
+  el.classList.toggle('active');
+}
+
+function toggleLanguage(el){
+  // Cerrar otros idiomas abiertos
+  document.querySelectorAll('.language-box.active').forEach(item => {
+    if (item !== el) item.classList.remove('active');
+  });
+  el.classList.toggle('active');
+}
+
+function toggleTimeline(el){
+  // Cerrar otros timelines abiertos
+  document.querySelectorAll('.timeline-item.active').forEach(item => {
+    if (item !== el) item.classList.remove('active');
+  });
+  el.classList.toggle('active');
+}
+
+function toggleGroup(el){
+  el.classList.toggle('open');
+}
 
 // MOSTRAR INFO HABILIDADES TECNICAS
 const skillInfoBox = document.getElementById('skillInfoBox');
+
 function showSkillInfo(skill){
   let info = '';
   switch(skill){
-
-    // 🎓 SMR (primero)
+    // 🎓 SMR
     case 'Sistemas Operativos':
       info = 'Administración básica de Windows y Linux, gestión de usuarios, permisos y configuración del sistema en entorno académico (SMR).';
       break;
@@ -567,7 +595,7 @@ function showSkillInfo(skill){
       info = 'Conocimientos básicos de programación en Python, incluyendo lógica simple y estructuras básicas aprendidas en SMR.';
       break;
 
-    // 🧾 OFIMÁTICA (en el medio)
+    // 🧾 OFIMÁTICA
     case 'Microsoft Word':
       info = 'Creación y edición de documentos, formato de textos y elaboración de documentos básicos en entorno académico y de prácticas.';
       break;
@@ -575,7 +603,7 @@ function showSkillInfo(skill){
       info = 'Uso de Microsoft Excel tanto en entorno académico (SMR) como en prácticas en ILUNION Sociosanitario. Gestión y organización de datos, uso de funciones básicas, filtrado de información y tratamiento de datos técnicos.';
       break;
 
-    // 🏢 EMPRESA (al final)
+    // 🏢 EMPRESA
     case 'Soporte Técnico':
       info = 'Resolución de incidencias básicas, soporte a usuarios y mantenimiento de equipos en entorno empresarial (ILUNION Sociosanitario).';
       break;
@@ -594,6 +622,8 @@ function showSkillInfo(skill){
     case 'Instalación de Equipos':
       info = 'Montaje de puestos de trabajo, instalación de monitores, periféricos y configuración básica de equipos informáticos en ILUNION Sociosanitario.';
       break;
+    default:
+      info = 'Selecciona una habilidad para ver más detalles.';
   }
   skillInfoBox.innerHTML = info;
   skillInfoBox.style.display = 'block';
