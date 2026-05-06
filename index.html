@@ -103,6 +103,7 @@ Me caracterizo por mi capacidad de aprendizaje, adaptación a nuevos entornos y 
 </div>
 </header>
 
+<!-- ITINERARIO ACADÉMICO (PRIMERO) -->
 <section>
 <h2>Itinerario Académico</h2>
 <div class="timeline">
@@ -148,6 +149,7 @@ Me caracterizo por mi capacidad de aprendizaje, adaptación a nuevos entornos y 
 </div>
 </section>
 
+<!-- HABILIDADES TÉCNICAS (DESPUÉS) -->
 <section>
 <h2>Habilidades Técnicas</h2>
 
@@ -185,6 +187,10 @@ Me caracterizo por mi capacidad de aprendizaje, adaptación a nuevos entornos y 
 
 <div class="skill-icon" onclick="event.stopPropagation();showSkillInfo('Python')">
 <i class="fab fa-python"></i><span>Python</span>
+</div>
+
+<div class="skill-icon" onclick="event.stopPropagation();showSkillInfo('SQL')">
+<i class="fas fa-database"></i><span>SQL</span>
 </div>
 
 </div>
@@ -243,6 +249,29 @@ Me caracterizo por mi capacidad de aprendizaje, adaptación a nuevos entornos y 
 </div>
 </section>
 
+<!-- COMPETENCIAS TÉCNICAS -->
+<section>
+<h2>Competencias Técnicas</h2>
+
+<div class="skill-box" onclick="toggleSkill(this)">
+<strong>SQL y Bases de Datos</strong>
+<div class="skill-squares">
+<div class="square filled"></div>
+<div class="square filled"></div>
+<div class="square filled"></div>
+<div class="square"></div>
+<div class="square"></div>
+</div>
+<div class="skill-detail">
+Diseño y gestión básica de bases de datos relacionales.<br>
+Realización de consultas SQL y manipulación de datos.<br>
+Conocimientos adquiridos durante el ciclo de SMR.
+</div>
+</div>
+
+</section>
+
+<!-- IDIOMAS -->
 <section>
 <h2>Idiomas</h2>
 <div class="language-box" onclick="toggleLanguage(this)">
@@ -288,6 +317,7 @@ Capacidad para entender frases sencillas en contextos básicos.
 </div>
 </section>
 
+<!-- COMPETENCIAS PERSONALES Y SOCIALES -->
 <section>
 <h2>Competencias Personales y Sociales</h2>
 <div class="skill-box" onclick="toggleSkill(this)">
@@ -447,6 +477,7 @@ Enfoque constructivo ante dificultades.
 </div>
 </section>
 
+<!-- EXPERIENCIA PROFESIONAL -->
 <section>
 <h2>Experiencia Profesional</h2>
 <div class="accordion">
@@ -473,6 +504,7 @@ Enfoque constructivo ante dificultades.
 </div>
 </section>
 
+<!-- PLAN DE ACCIÓN -->
 <section>
 <h2>Plan de Acción</h2>
 <div class="accordion">
@@ -572,6 +604,9 @@ function showSkillInfo(skill){
       break;
     case 'Python':
       info = 'Conocimientos básicos de programación en Python, incluyendo lógica simple y estructuras básicas aprendidas en SMR.';
+      break;
+    case 'SQL':
+      info = 'Conocimientos básicos de bases de datos relacionales, consultas SQL y gestión de tablas adquiridos en SMR.';
       break;
 
     // 🧾 OFIMÁTICA
