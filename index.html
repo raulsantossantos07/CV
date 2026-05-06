@@ -152,7 +152,7 @@ Me caracterizo por mi capacidad de aprendizaje, adaptación a nuevos entornos y 
 <h2>Habilidades Técnicas</h2>
 
 <!-- Cajas donde se mostrará la info de la habilidad -->
-<div class="skill-info-box" id="skillInfoBox" style="display:none;"></div>
+<div class="skill-info-box" id="skillInfoBox"></div>
 
 <!-- 🎓 FORMACION -->
 <div class="skill-group" onclick="toggleGroup(this)">
@@ -233,6 +233,10 @@ Me caracterizo por mi capacidad de aprendizaje, adaptación a nuevos entornos y 
 
 <div class="skill-icon" onclick="event.stopPropagation();showSkillInfo('Instalación de Equipos')">
 <i class="fas fa-desktop"></i><span>Instalación de Equipos</span>
+</div>
+
+<div class="skill-icon" onclick="event.stopPropagation();showSkillInfo('Gestión de Datos')">
+<i class="fas fa-database"></i><span>Gestión de Datos</span>
 </div>
 
 </div>
@@ -535,41 +539,11 @@ A largo plazo especializarme en desarrollo tecnológico y videojuegos.
 
 <script>
 // ACCORDION Y TIMELINE
-function toggleAccordion(el){
-  // Cerrar otros accordions abiertos
-  document.querySelectorAll('.accordion-item.active').forEach(item => {
-    if (item !== el) item.classList.remove('active');
-  });
-  el.classList.toggle('active');
-}
-
-function toggleSkill(el){
-  // Cerrar otras skills abiertas
-  document.querySelectorAll('.skill-box.active').forEach(item => {
-    if (item !== el) item.classList.remove('active');
-  });
-  el.classList.toggle('active');
-}
-
-function toggleLanguage(el){
-  // Cerrar otros idiomas abiertos
-  document.querySelectorAll('.language-box.active').forEach(item => {
-    if (item !== el) item.classList.remove('active');
-  });
-  el.classList.toggle('active');
-}
-
-function toggleTimeline(el){
-  // Cerrar otros timelines abiertos
-  document.querySelectorAll('.timeline-item.active').forEach(item => {
-    if (item !== el) item.classList.remove('active');
-  });
-  el.classList.toggle('active');
-}
-
-function toggleGroup(el){
-  el.classList.toggle('open');
-}
+function toggleAccordion(el){el.classList.toggle("active")}
+function toggleSkill(el){el.classList.toggle("active")}
+function toggleLanguage(el){el.classList.toggle("active")}
+function toggleTimeline(el){el.classList.toggle("active")}
+function toggleGroup(el){el.classList.toggle("open");}
 
 // MOSTRAR INFO HABILIDADES TECNICAS
 const skillInfoBox = document.getElementById('skillInfoBox');
@@ -605,7 +579,7 @@ function showSkillInfo(skill){
       info = 'Creación y edición de documentos, formato de textos y elaboración de documentos básicos en entorno académico y de prácticas.';
       break;
     case 'Microsoft Excel':
-      info = 'Uso de Microsoft Excel tanto en entorno académico (SMR) como en prácticas en ILUNION Sociosanitario. Gestión y organización de datos, uso de funciones básicas, filtrado de información y tratamiento de datos técnicos.';
+      info = 'Uso de Microsoft Excel en entorno académico y de prácticas. Organización de datos, filtrado de información, uso de funciones básicas y tratamiento de datos técnicos.';
       break;
 
     // 🏢 EMPRESA
@@ -626,6 +600,9 @@ function showSkillInfo(skill){
       break;
     case 'Instalación de Equipos':
       info = 'Montaje de puestos de trabajo, instalación de monitores, periféricos y configuración básica de equipos informáticos en ILUNION Sociosanitario.';
+      break;
+    case 'Gestión de Datos':
+      info = 'Organización, revisión y tratamiento de datos en entorno de prácticas, asegurando la correcta estructura y coherencia de la información.';
       break;
   }
   skillInfoBox.innerHTML = info;
