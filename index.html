@@ -152,7 +152,7 @@ Me caracterizo por mi capacidad de aprendizaje, adaptación a nuevos entornos y 
 <h2>Habilidades Técnicas</h2>
 
 <!-- Cajas donde se mostrará la info de la habilidad -->
-<div class="skill-info-box" id="skillInfoBox">Selecciona una habilidad para ver más detalles</div>
+<div class="skill-info-box" id="skillInfoBox" style="display:none;"></div>
 
 <!-- 🎓 FORMACION -->
 <div class="skill-group" onclick="toggleGroup(this)">
@@ -627,8 +627,6 @@ function showSkillInfo(skill){
     case 'Instalación de Equipos':
       info = 'Montaje de puestos de trabajo, instalación de monitores, periféricos y configuración básica de equipos informáticos en ILUNION Sociosanitario.';
       break;
-    default:
-      info = 'Selecciona una habilidad para ver más detalles.';
   }
   skillInfoBox.innerHTML = info;
   skillInfoBox.style.display = 'block';
