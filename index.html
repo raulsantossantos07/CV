@@ -209,6 +209,14 @@ Me caracterizo por mi capacidad de aprendizaje, adaptación a nuevos entornos y 
 <i class="fas fa-file-excel"></i><span>Microsoft Excel</span>
 </div>
 
+<div class="skill-icon" onclick="event.stopPropagation();showSkillInfo('Microsoft PowerPoint')">
+<i class="fas fa-file-powerpoint"></i><span>Microsoft PowerPoint</span>
+</div>
+
+<div class="skill-icon" onclick="event.stopPropagation();showSkillInfo('Microsoft 365')">
+<i class="fas fa-building"></i><span>Microsoft 365</span>
+</div>
+
 </div>
 </div>
 
@@ -616,7 +624,13 @@ function showSkillInfo(skill){
     case 'Microsoft Excel':
       info = 'Uso de Microsoft Excel en entorno académico y de prácticas. Organización de datos, filtrado de información, uso de funciones básicas y tratamiento de datos técnicos.';
       break;
-
+    case 'Microsoft PowerPoint':
+      info = 'Preparación, organización y revisión de presentaciones técnicas en entorno académico y de prácticas.';
+      break;
+    case 'Microsoft 365':
+      info = 'Uso de cuentas corporativas, validación de usuarios y comprobación de coincidencias entre listados empresariales.';
+      break;
+      
     // 🏢 EMPRESA
     case 'Soporte Técnico':
       info = 'Resolución de incidencias básicas, soporte a usuarios y mantenimiento de equipos en entorno empresarial (ILUNION Sociosanitario).';
