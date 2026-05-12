@@ -253,6 +253,14 @@ Me caracterizo por mi capacidad de aprendizaje, adaptación a nuevos entornos y 
 <i class="fas fa-database"></i><span>Gestión de Datos</span>
 </div>
 
+<div class="skill-icon" onclick="event.stopPropagation();showSkillInfo('Escaneo IMEI')">
+<i class="fas fa-barcode"></i><span>Escaneo IMEI</span>
+</div>
+
+<div class="skill-icon" onclick="event.stopPropagation();showSkillInfo('Tarjetas SIM')">
+<i class="fas fa-sim-card"></i><span>Tarjetas SIM</span>
+</div>
+
 </div>
 </div>
 </section>
@@ -652,6 +660,12 @@ function showSkillInfo(skill){
       break;
     case 'Gestión de Datos':
       info = 'Organización, revisión y tratamiento de datos en entorno de prácticas, asegurando la correcta estructura y coherencia de la información.';
+      break;
+    case 'Escaneo IMEI':
+      info = 'Escaneo y registro de códigos IMEI mediante lectores de códigos de barras para trazabilidad de dispositivos.';
+      break;
+    case 'Tarjetas SIM':
+      info = 'Instalación, activación y comprobación de tarjetas SIM en dispositivos corporativos.';
       break;
   }
   skillInfoBox.innerHTML = info;
